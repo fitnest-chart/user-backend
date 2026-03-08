@@ -32,7 +32,7 @@ jwt:
 env:
   SPRING_PROFILES_ACTIVE: dev
   SPRINGDOC_SERVER_URL: "https://dev-api.fitnest.az"
-  SPRING_DATASOURCE_URL: "jdbc:postgresql://postgresql-user:5432/fitnest_user?sslmode=disable"
+  SPRING_DATASOURCE_URL: "jdbc:postgresql://postgresql-shared:5432/fitnest_user?sslmode=disable"
   SPRING_DATASOURCE_USERNAME: "fitnest_user"
   SPRING_DATASOURCE_PASSWORD: "user_password_123"
   SPRING_DATASOURCE_DRIVER_CLASS_NAME: "org.postgresql.Driver"
