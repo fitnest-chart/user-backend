@@ -1,0 +1,39 @@
+{{- if .Values.networkPolicy.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "user-service.fullname" . }}-ingress
+  labels:
+    {{- include "user-service.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      {{- include "user-service.selectorLabels" . | nindent 6 }}
+  policyTypes:
+    - Ingress
+  ingress:
+    # 允许来自 api-gateway pods 的流量
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: api-gateway
+      ports:
+        - port: {{ .Values.service.port }}
+          protocol: TCP
+        - port: {{ .Values.service.grpcPort }}
+          protocol: TCP
+    {{- if .Values.networkPolicy.allowedServices }}
+    # 允许来自其他内部服务的流量
+    - from:
+        {{- range .Values.networkPolicy.allowedServices }}
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: {{ . }}
+        {{- end }}
+      ports:
+        - port: {{ $.Values.service.port }}
+          protocol: TCP
+        - port: {{ $.Values.service.grpcPort }}
+          protocol: TCP
+    {{- end }}
+  {{- end }}
