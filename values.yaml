@@ -1,19 +1,16 @@
 # values.yaml for user-backend
 
 replicaCount: 1
-
 image:
   repository: ghcr.io/fitnest-code/user-backend
-  tag: "development-66e340f"
+  tag: "development-eadaa2f"
   pullPolicy: IfNotPresent
   imagePullSecrets:
     - name: ghcr-secret
-
 service:
   type: ClusterIP
   port: 8080
   grpcPort: 9090
-
 networkPolicy:
   enabled: true
   allowedServices:
@@ -22,17 +19,14 @@ networkPolicy:
     - storage-backend
     - catalog-backend
     # api-gateway is already hardcoded in the policy template
-
 hpa:
   enabled: false
   minReplicas: "1"
   maxReplicas: "3"
   cpuUtilization: "90"
   memoryUtilization: "450Mi"
-
 jwt:
   secret: "your-jwt-secret-change-in-production"
-
 env:
   SPRING_PROFILES_ACTIVE: dev
   SPRINGDOC_SERVER_URL: "https://dev-api.fitnest.az"
