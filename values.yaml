@@ -49,7 +49,7 @@ env:
   JWT_SECRET: "your-jwt-secret-change-in-production"
   JWT_ISSUER: "fitnest"
   IDENTITY_BACKEND_URL: "http://identity-backend:8080"
-  ORDER_BACKEND_GRPC_ADDRESS: "dns:///order-backend.fitnest-dev.svc.cluster.local:9090"
+  ORDER_BACKEND_GRPC_ADDRESS: "dns:///order-backend.fitnest-development.svc.cluster.local:9090"
   NOTIFICATIONS_BACKEND_URL: "http://notifications-backend:8080"
   NOTIFICATIONS_BACKEND_GRPC_HOST: "notifications-backend"
   NOTIFICATIONS_BACKEND_GRPC_PORT: "9090"
