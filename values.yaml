@@ -9,7 +9,7 @@ image:
     - name: ghcr-secret
   pullPolicy: IfNotPresent
   repository: ghcr.io/fitnest-code/user-backend
-  tag: production-e868254
+  tag: production-19a742d
 jwt:
   secret: your-jwt-secret-change-in-production
 networkPolicy:
